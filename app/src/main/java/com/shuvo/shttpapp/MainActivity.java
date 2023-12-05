@@ -1,88 +1,58 @@
 package com.shuvo.shttpapp;
 
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-
+import com.shuvo.shrrp.OnApiresposne;
 import com.shuvo.shrrp.ShttpApiCall;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-// a sinple get request
-        ShttpApiCall.getRequest("https://jsonplaceholder.typicode.com/posts", "KEY", new ShttpApiCall.ShttpOnResponseListener() {
+        Button getRequestBtn = findViewById(R.id.get);
+        TextView tv = findViewById(R.id.textView);
+        Button postRequestBtm = findViewById(R.id.post);
+        ShttpApiCall shttpApiCall = new ShttpApiCall();
+        getRequestBtn.setOnClickListener(view -> shttpApiCall.getRequest("https://jsonplaceholder.typicode.com/posts/1", new OnApiresposne() {
             @Override
-            public void onApiResponse(String result, String key, int statusCpde, Boolean errorn, String errorMessage) {
+            public void onSuccessResponse(String result, int statuscode) {
+                tv.setText(result);
+            }
 
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // resukt your  response in string format
-                        //key help you to identfy your request
-                        //statusCode your response status code
-
-                        if(errorn){
-                            //if url is wrong  , server error or  no inter connection so erroer is euqal true
-                            //if error is true so you  get the error  message else it is null
-
-                        }else {
-                            //vonvert the  result to jsonpbject
-                            try {
-                                JSONObject jsonObject = new JSONObject(result);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-
-                        }
-
-
-                    }
-                });
+            @Override
+            public void onFailure(String errorMessage) {
+                tv.setText(errorMessage);
 
             }
-        });
-        // a sinple post request
-        ShttpApiCall.postRequest("https://jsonplaceholder.typicode.com/posts","{\"post  body or null ", "KEY", new ShttpApiCall.ShttpOnResponseListener() {
+
             @Override
-            public void onApiResponse(String result, String key, int statusCpde, Boolean error, String errorMessage) {
+            public void onErrorResponse(String errorMessage, int StatusCode) {
+                tv.setText(errorMessage);
+            }
+        }));
 
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // resukt your  response in string format
-                        //key help you to identfy your request
-                        //statusCode your response status code
+        postRequestBtm.setOnClickListener(view -> shttpApiCall.postApiRequest("https://jsonplaceholder.typicode.com/posts/", new OnApiresposne() {
+            @Override
+            public void onSuccessResponse(String result, int statuscode) {
+                tv.setText(result);
+            }
 
-                        if(error){
-                            //if url is wrong  , server error or  no inter connection so erroer is euqal true
-                            //if error is true so you  get the error  message else it is null
-
-                        }else {
-                            //vonvert the  result to jsonpbject
-                            try {
-                                JSONObject jsonObject = new JSONObject(result);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-
-                        }
-
-
-                    }
-                });
+            @Override
+            public void onFailure(String errorMessage) {
+                tv.setText(errorMessage);
 
             }
-        });
 
-
-
-
+            @Override
+            public void onErrorResponse(String errorMessage, int StatusCode) {
+                tv.setText(errorMessage);
+            }
+        }));
     }
 }

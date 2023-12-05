@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">testappi</string>
+    <string name="get_request">Get Request</string>
+    <string name="post_request">Post Request</string>
 </resources>
