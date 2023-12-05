@@ -4,20 +4,19 @@ plugins {
 }
 
 android {
-    namespace 'com.shuvo.shrrp'
+    namespace 'com.shuvo.shttp'
     compileSdk 34
 
     defaultConfig {
         minSdk 26
         targetSdk 34
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -30,21 +29,16 @@ android {
 
 dependencies {
     implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.10")
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.10.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-}
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                groupId = "com.github.shttp"
-                artifactId = "shttpApi"
-                version = "1.0"
 
-            }
+}
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = "com.github.sarowarhosen03"
+            artifactId = "shtp"
+            version = "1.0.0"
+
+            from(components.findByName("java"))
         }
     }
 }
