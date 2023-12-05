@@ -1,4 +1,4 @@
-package com.shuvo.shrrp;
+package com.shuvo.shttp;
 
 import org.junit.Test;
 

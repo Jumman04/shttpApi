@@ -1,4 +1,4 @@
-package com.shuvo.shrrp;
+package com.shuvo.shttp;
 
 public interface OnApiresposne {
     void onSuccessResponse(String result, int statuscode);

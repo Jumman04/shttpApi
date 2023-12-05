@@ -6,8 +6,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.shuvo.shrrp.OnApiresposne;
-import com.shuvo.shrrp.ShttpApiCall;
+import com.shuvo.shttp.OnApiresposne;
+import com.shuvo.shttp.ShttpApiCall;
 
 public class MainActivity extends AppCompatActivity {
 
