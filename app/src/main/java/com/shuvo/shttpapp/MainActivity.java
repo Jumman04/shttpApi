@@ -29,32 +29,33 @@ public class MainActivity extends AppCompatActivity {
         ShttpApiCall shttpApiCall = new ShttpApiCall();
 
         // Setting up a click listener for the GET request button
-        getRequestBtn.setOnClickListener(view -> shttpApiCall.getRequest("https://jsonplaceholder.typicode.com/posts/1", new OnApiResponse() {
+        getRequestBtn.setOnClickListener(view -> shttpApiCall.getRequest("http://192.168.0.106:8090/test", new OnApiResponse() {
             @Override
-            public void onSuccessResponse(String result, int statusCode) {
+            public void onSuccessResponse(String response, int statusCode) {
                 // Updating the TextView with the successful response
-                tv.setText(result);
+                tv.setText(response);
             }
 
             @Override
             public void onFailure(String errorMessage) {
                 // Updating the TextView with the failure message
-                tv.setText(errorMessage);
+                tv.setText("on failer");
             }
 
             @Override
-            public void onErrorResponse(String errorMessage, int statusCode) {
-                // Updating the TextView with the error response
-                tv.setText(errorMessage);
+            public void onErrorResponse(String response, String errorMessage, int statusCode) {
+                tv.setText(response + " on failer");
+
             }
+
         }));
 
         // Setting up a click listener for the POST request button
         postRequestBtn.setOnClickListener(view -> shttpApiCall.postApiRequest("https://jsonplaceholder.typicode.com/posts/", new OnApiResponse() {
             @Override
-            public void onSuccessResponse(String result, int statusCode) {
+            public void onSuccessResponse(String response, int statusCode) {
                 // Updating the TextView with the successful response
-                tv.setText(result);
+                tv.setText(response);
             }
 
             @Override
@@ -64,10 +65,11 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onErrorResponse(String errorMessage, int statusCode) {
-                // Updating the TextView with the error response
-                tv.setText(errorMessage);
+            public void onErrorResponse(String response, String errorMessage, int statusCode) {
+                tv.setText(response + " on failer");
             }
+
+
         }));
     }
 }

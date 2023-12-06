@@ -37,7 +37,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = "com.github.sarowarhosen03"
             artifactId = "shtp"
-            version = "1.0.0"
+            version = "1.1"
 
             from(components.findByName("java"))
         }

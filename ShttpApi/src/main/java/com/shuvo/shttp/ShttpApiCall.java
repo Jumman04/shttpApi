@@ -81,7 +81,13 @@ public class ShttpApiCall {
                     });
                 } else
                     // Passing the error response to the callback
-                    mainHandler.post(() -> onApiResponse.onErrorResponse(response.message(), response.code()));
+                    mainHandler.post(() -> {
+                        try {
+                            onApiResponse.onErrorResponse(response.body().string(),response.message(), response.code());
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
 
             }
         });
@@ -163,7 +169,13 @@ public class ShttpApiCall {
                     });
                 } else
                     // Passing the error response to the callback
-                    mainHandler.post(() -> onApiResponse.onErrorResponse(response.message(), response.code()));
+                    mainHandler.post(() -> {
+                        try {
+                            onApiResponse.onErrorResponse(response.body().string(),response.message(), response.code());
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
 
             }
         });

@@ -8,10 +8,10 @@ public interface OnApiResponse {
     /**
      * Callback method invoked when the API request is successful.
      *
-     * @param result     The result or response body of the successful API request.
+     * @param response     The response or response body of the successful API request.
      * @param statusCode The HTTP status code indicating the success of the request.
      */
-    void onSuccessResponse(String result, int statusCode);
+    void onSuccessResponse(String response, int statusCode);
 
     /**
      * Callback method invoked when the API request encounters a failure.
@@ -23,8 +23,9 @@ public interface OnApiResponse {
     /**
      * Callback method invoked when the API request returns an error response.
      *
-     * @param errorMessage The error message provided by the API.
+     * @param response    The response or response body of the error response.
+     * @param errorMessage The error message provided by the API. statusCode The HTTP status code indicating the error response.
      * @param statusCode   The HTTP status code indicating the error response.
      */
-    void onErrorResponse(String errorMessage, int statusCode);
+    void onErrorResponse(String response,String errorMessage, int statusCode);
 }
