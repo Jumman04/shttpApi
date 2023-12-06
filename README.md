@@ -22,9 +22,9 @@ dependencyResolutionManagement {
 Add the Jummania-Slider dependency to your app module's `build.gradle` file:
 
  ```gradle
-dependencies {
-    implementation("com.github.Mdsarowarhossain:shttp:1.0")
-}
+ddependencies {
+	        implementation 'com.github.sarowarhosen03:shttpApi:1.0'
+	}
 ```
 
 ## jitpack
