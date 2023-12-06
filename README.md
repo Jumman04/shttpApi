@@ -28,4 +28,4 @@ ddependencies {
 ```
 
 ## jitpack
-[![](https://jitpack.io/v/Mdsarowarhossain/shttp.svg)](https://jitpack.io/#Mdsarowarhossain/shttp)
+[![](https://jitpack.io/v/sarowarhosen03/shttpApi.svg)](https://jitpack.io/#sarowarhosen03/shttpApi)
