@@ -8,7 +8,7 @@ semple http call
 
 Add the JitPack repository to your project's root `settings.gradle` file:
 
-```ktx
+```groovy
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
