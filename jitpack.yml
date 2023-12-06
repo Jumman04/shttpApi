@@ -1,10 +1,8 @@
+# configuration file for building snapshots and releases with jitpack.io
 jdk:
-  - openjdk107
+  - openjdk17
 before_install:
-  - echo "Before Install"
-  - bash ensure-java-17 install
+  - ./scripts/prepareJitpackEnvironment.sh
 install:
-  - echo "Install"
-  - if ! bash ensure-java-16 use; then source ~/.sdkman/bin/sdkman-init.sh; fi
-  - java -version
-  - mvn install
+  - FILE="-Dfile=ShttpApi-release.aar"
+  - mvn install:install-file $FILE -DgroupId=com.github.sarowarhosen03 -DartifactId=shtp -Dversion=latest -Dpackaging=aar -DgeneratePom=true -DpomFile=pom.xml

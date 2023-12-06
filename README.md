@@ -1,24 +1,31 @@
 # shttp
+
 semple http call
 
-##To get a Git project into your build:
+## To integrate Jummania-Slider into your Android project, follow these steps:
 
-Step 1. Add the JitPack repository to your build file
+### Step 1: Add JitPack Repository
 
+Add the JitPack repository to your project's root `settings.gradle` file:
 
-`	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+```groovy
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url = uri("https://jitpack.io") }
+    }
+}
+```
+
+## Step 2: Add the Dependency
+
+Add the Jummania-Slider dependency to your app module's `build.gradle` file:
+
+ ```gradle
+ddependencies {
+	        implementation 'com.github.sarowarhosen03:shttpApi:1.0'
 	}
-`
+```
 
-
-
-##Step 2. Add the dependency
-  `  implementation 'com.github.Mdsarowarhossain:shttp:shttp`
-
-
-##jitpack 
-[![](https://jitpack.io/v/Mdsarowarhossain/shttp.svg)](https://jitpack.io/#Mdsarowarhossain/shttp)
+## jitpack
+[![](https://jitpack.io/v/sarowarhosen03/shttpApi.svg)](https://jitpack.io/#sarowarhosen03/shttpApi)
